@@ -23,7 +23,6 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private long productId;
     private long quantity;
     private long amount;
     private String status;
