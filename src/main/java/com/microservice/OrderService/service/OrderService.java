@@ -52,7 +52,10 @@ public class OrderService {
     order.setId(id);
     BeanUtils.copyProperties(orderRequest, order);
     order.setDate(LocalDate.now());
-    order.setStatus(Status.ONPROGRESS);
+    order.setStatus(Status.DRAFT);
+    if (orderRequest.getStatusId() == 2) {
+      order.setStatus(Status.ONPROGRESS);
+    }
     orderRepository.save(order);
     return orderResponseMap(order);
   }

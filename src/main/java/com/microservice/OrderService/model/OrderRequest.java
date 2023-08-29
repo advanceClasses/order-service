@@ -9,4 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class OrderRequest {
   private long quantity, amount;
+  private int statusId;
 }
