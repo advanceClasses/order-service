@@ -1,0 +1,25 @@
+@url = http://localhost:8086/order
+### Get all
+GET {{url}}/
+### Get by id
+GET {{url}}/1
+### Create
+POST {{url}}/
+Content-Type: application/json
+
+{
+  "quantity" : 2,
+  "amount" : 3
+}
+
+### Update
+PUT {{url}}/1
+Content-Type: application/json
+
+{
+  "quantity" : 2,
+  "amount" : 3
+}
+
+### Delete
+DELETE  {{url}}/1
