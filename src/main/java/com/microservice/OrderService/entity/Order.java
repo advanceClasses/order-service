@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "tb_m_order")
+@Table(name = "tb_tr_order")
 public class Order {
 
     @Id
@@ -28,4 +28,5 @@ public class Order {
     private long amount;
     private String status;
     private LocalDate date;
+    private long productId;
 }

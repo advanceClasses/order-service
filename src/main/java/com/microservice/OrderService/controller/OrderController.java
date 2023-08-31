@@ -42,12 +42,13 @@ public class OrderController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<OrderResponse> update(@PathVariable long id, @RequestBody OrderRequest orderRequest) {
-        return new ResponseEntity<>(orderService.update(id, orderRequest), HttpStatus.OK);
+    public ResponseEntity<Void> update(@PathVariable long id) {
+        orderService.update(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<OrderResponse> delete(@PathVariable long id) {
-        return new ResponseEntity<>(orderService.delete(id), HttpStatus.OK);
+    @GetMapping("/{id}/amount")
+    public ResponseEntity<Long> getAmount(@PathVariable long id) {
+        return new ResponseEntity<>(orderService.getAmount(id), HttpStatus.OK);
     }
 }

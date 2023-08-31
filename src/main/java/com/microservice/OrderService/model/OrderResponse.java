@@ -17,4 +17,5 @@ public class OrderResponse {
     private long amount;
     private String status;
     private LocalDate date;
+    private long productId;
 }
