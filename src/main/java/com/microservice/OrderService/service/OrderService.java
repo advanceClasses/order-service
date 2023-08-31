@@ -8,7 +8,10 @@ import com.microservice.OrderService.repository.OrderRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.BeanUtils;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.time.Instant;
 import java.util.List;
@@ -20,6 +23,7 @@ import java.util.stream.Collectors;
 public class OrderService {
 
     private OrderRepository orderRepository;
+    private RestTemplate restTemplate;
 
     public List<OrderResponse> getAll(){
         log.info("Get all order data");
@@ -45,6 +49,15 @@ public class OrderService {
             // Reduce the product
 
         log.info("Order data form user : {}", orderRequest);
+
+        restTemplate.exchange(
+                "http://PRODUCT-SERVICE/product/checkAvail/" + orderRequest.getProductId() + "?quantity=" + orderRequest.getQuantity(),
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<Void>() {
+                }
+        );
+
         Order order = Order.builder()
                 .amount(orderRequest.getAmount())
                 .quantity(orderRequest.getQuantity())
