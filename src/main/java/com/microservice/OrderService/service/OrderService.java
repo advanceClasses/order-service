@@ -46,12 +46,6 @@ public class OrderService {
 
   public OrderResponse create(OrderRequest orderRequest) {
     // Check Available product
-    // Place Order
-    // Payment
-    // Reduce the product
-
-    log.info("Order data form user : {}", orderRequest);
-
     restTemplate.exchange(
         "http://PRODUCT-SERVICE/product/checkAvail/" + orderRequest.getProductId() + "?quantity="
             + orderRequest.getQuantity(),
@@ -59,6 +53,8 @@ public class OrderService {
         null,
         new ParameterizedTypeReference<Void>() {
         });
+    // Place Order
+    log.info("Order data form user : {}", orderRequest);
 
     Order order = Order.builder()
         .amount(orderRequest.getAmount())
@@ -70,7 +66,29 @@ public class OrderService {
 
     orderRepository.save(order);
     log.info("Place Order with id {}", order.getId());
+    // Payment
+    // Reduce the product
     return orderResponseMap(order);
+  }
+
+  public void update(long id) {
+    OrderResponse orderResponse = getById(id);
+    Order order = new Order();
+    BeanUtils.copyProperties(orderResponse, order);
+    order.setStatus("FINISH");
+    orderRepository.save(order);
+    restTemplate.exchange(
+        "http://PRODUCT-SERVICE/product/reduceQuantity/" + order.getProductId() + "?quantity="
+            + order.getQuantity(),
+        HttpMethod.PUT,
+        null,
+        new ParameterizedTypeReference<Void>() {
+        });
+  }
+
+  public long getAmount(long id) {
+    OrderResponse order = getById(id);
+    return order.getAmount();
   }
 
   public OrderResponse orderResponseMap(Order order) {

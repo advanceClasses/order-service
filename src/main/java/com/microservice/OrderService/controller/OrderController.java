@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,5 +38,16 @@ public class OrderController {
   @PostMapping
   public ResponseEntity<OrderResponse> create(@RequestBody OrderRequest orderRequest) {
     return new ResponseEntity<>(orderService.create(orderRequest), HttpStatus.CREATED);
+  }
+
+  @PutMapping("/{id}")
+  public ResponseEntity<Void> update(@PathVariable long id) {
+    orderService.update(id);
+    return new ResponseEntity<>(HttpStatus.OK);
+  }
+
+  @GetMapping("/{id}/amount")
+  public ResponseEntity<Long> getAmount(@PathVariable long id) {
+    return new ResponseEntity<>(orderService.getAmount(id), HttpStatus.OK);
   }
 }

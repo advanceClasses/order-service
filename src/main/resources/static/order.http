@@ -8,8 +8,9 @@ POST {{url}}/
 Content-Type: application/json
 
 {
-  "quantity" : 2,
-  "amount" : 3
+  "quantity" : 5,
+  "amount" : 350000,
+  "productId" : 2
 }
 
 ### Update
@@ -24,3 +25,5 @@ Content-Type: application/json
 
 ### Delete
 DELETE  {{url}}/1
+### Get Amount
+GET {{url}}/1/amount
