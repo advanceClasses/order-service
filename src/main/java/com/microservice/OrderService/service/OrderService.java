@@ -71,6 +71,26 @@ public class OrderService {
         return orderResponseMap(order);
     }
 
+    public void update(long id) {
+        OrderResponse orderResponse = getById(id);
+        Order order = new Order();
+        BeanUtils.copyProperties(orderResponse, order);
+        order.setStatus("FINISH");
+        orderRepository.save(order);
+        restTemplate.exchange(
+            "http://PRODUCT-SERVICE/product/reduceQuantity/" + order.getProductId() + "?quantity="
+                + order.getQuantity(),
+            HttpMethod.PUT,
+            null,
+            new ParameterizedTypeReference<Void>() {
+            });
+      }
+    
+      public long getAmount(long id) {
+        OrderResponse order = getById(id);
+        return order.getAmount();
+      }
+
     public OrderResponse orderResponseMap(Order order){
         OrderResponse orderResponse = new OrderResponse();
         BeanUtils.copyProperties(order,orderResponse);
