@@ -1,6 +1,6 @@
 package com.microservice.OrderService.service;
 
-import java.time.LocalDate;
+import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,10 +38,13 @@ public class OrderService {
     }
 
     public OrderResponse create(OrderRequest orderRequest) {
-        Order order = new Order();
-        BeanUtils.copyProperties(orderRequest, order);
-        order.setDate(LocalDate.now());
-        order.setStatus("On Process");
+        Order order = Order.builder()
+                        .amount(orderRequest.getAmount())
+                        .quantity(orderRequest.getQuantity())
+                        .productId(orderRequest.getProductId())
+                        .date(Instant.now())
+                        .status("Pending")
+                        .build();
         orderRepository.save(order);
         return orderResponseMap(order);
     }
