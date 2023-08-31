@@ -5,24 +5,24 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 import javax.persistence.*;
+import java.time.Instant;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "tb_m_order")
+@Table(name = "tb_tr_order")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private int quantity;
-    private int amount;
+    private long amount;
     private String status;
-    private Date date;
+    private Instant date;
+    private long productId;
 
 }

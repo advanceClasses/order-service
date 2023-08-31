@@ -9,7 +9,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import com.microservice.OrderService.model.ErrorMessage;
 
 @ControllerAdvice
-public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler{
+public class RestExceptionHandler extends ResponseEntityExceptionHandler{
     
     @ExceptionHandler(CustomException.class)
     public ResponseEntity<ErrorMessage> customException(CustomException customException){
