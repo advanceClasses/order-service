@@ -1,4 +1,4 @@
-package com.microservice.OrderService.model;
+package com.microservice.OrderService.external.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,9 +9,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ErrorMessage {
+public class PaymentRequest {
 
-    private String message;
-    private String error;
+    private PaymentMode mode;
+    private long amount;
+    private long orderId;
 
 }
