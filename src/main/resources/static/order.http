@@ -10,7 +10,8 @@ Content-Type: application/json
 {
   "quantity" : 5,
   "amount" : 350000,
-  "productId" : 2
+  "productId" : 2,
+  "mode" : "CASH"
 }
 
 ### Update

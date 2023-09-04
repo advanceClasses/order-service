@@ -2,6 +2,8 @@ package com.microservice.OrderService.model;
 
 import java.time.Instant;
 
+import com.microservice.OrderService.external.response.ProductResponse;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,6 +20,5 @@ public class OrderResponse {
   private long amount;
   private String status;
   private Instant date;
-  private long productId;
-
+  private ProductResponse product;
 }
