@@ -1,6 +1,5 @@
-package com.microservice.OrderService.model;
+package com.microservice.OrderService.external.request;
 
-import com.microservice.OrderService.external.request.PaymentMode;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,8 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class OrderRequest {
+public class PaymentRequest {
     
-    private long quantity, amount, productId;
+    private long orderId, amount;
     private PaymentMode mode;
+
 }

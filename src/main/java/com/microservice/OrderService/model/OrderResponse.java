@@ -16,12 +16,11 @@ import lombok.NoArgsConstructor;
 @Builder
 public class OrderResponse {
     
-    private long id, quantity, amount;
+    private long id, quantity, amount, productId;
     private String status;
 
     // @DateTimeFormat(pattern = "dd MMMM yyyy")
     // @JsonFormat(pattern = "dd MMMM yyyy")
-    
     @Temporal(TemporalType.TIMESTAMP)
     @JsonSerialize(using = CustomDateSerializer.class)
     private Date date;

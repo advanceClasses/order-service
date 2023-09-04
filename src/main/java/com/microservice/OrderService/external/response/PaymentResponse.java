@@ -1,5 +1,6 @@
-package com.microservice.OrderService.model;
+package com.microservice.OrderService.external.response;
 
+import java.time.Instant;
 import com.microservice.OrderService.external.request.PaymentMode;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,8 +11,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class OrderRequest {
+public class PaymentResponse {
     
-    private long quantity, amount, productId;
+    private long id, orderId, amount;
     private PaymentMode mode;
+    private String status;
+    private Instant date;
+    
 }
