@@ -1,12 +1,11 @@
 package com.microservice.OrderService.model;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.Instant;
 
 @Data
 @AllArgsConstructor
@@ -14,10 +13,11 @@ import lombok.NoArgsConstructor;
 @Builder
 public class OrderResponse {
 
-    private Long id;
-    private Integer quantity;
-    private BigDecimal amount;
+    private long id;
+    private int quantity;
+    private long amount;
     private String status;
-    private LocalDate date;
+    private Instant date;
+    private long productId;
 
 }
