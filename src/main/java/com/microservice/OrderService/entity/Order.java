@@ -12,16 +12,17 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "tb_m_order")
+@Table(name = "tb_tr_order")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private long ammount;
+    private long amount;
     private int quantity;
     private String status;
     private LocalDate date;
+    private long productId;
     
     
 }

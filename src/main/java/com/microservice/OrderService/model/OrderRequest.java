@@ -1,6 +1,6 @@
 package com.microservice.OrderService.model;
 
-import java.time.LocalDate;
+import com.microservice.OrderService.external.request.paymentMode;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,9 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class OrderRequest {
 
-    private long ammount;
+    private long amount;
     private int quantity;
-    private String status;
-    private LocalDate date;
+    private long productId;
+    private paymentMode mode;
     
 }
