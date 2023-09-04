@@ -1,8 +1,8 @@
-package com.microservice.OrderService.model;
+package com.microservice.OrderService.external.response;
 
 import java.time.LocalDateTime;
 
-import com.microservice.OrderService.external.response.ProductResponse;
+import com.microservice.OrderService.external.request.PaymentMode;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,11 +13,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class OrderResponse {
+public class PaymentResponse {
     private long id;
-    private ProductResponse product;
-    private int quantity;
-    private long amount;
+    private PaymentMode mode;
     private String status;
+    private long amount;
     private LocalDateTime date;
+    private long orderId;
 }

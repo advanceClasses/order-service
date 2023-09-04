@@ -1,6 +1,6 @@
 package com.microservice.OrderService.entity;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,14 +18,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "tb_m_order")
+@Table(name = "tb_tr_order")
 public class Order {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private long id;
-
-  private long quantity, amount;
-  private String status;
-  private LocalDate date;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    private long productId;
+    private int quantity;
+    private long amount;
+    private String status;
+    private LocalDateTime date;
 }
