@@ -1,6 +1,6 @@
 package com.microservice.OrderService.entity;
 
-import java.time.LocalDate;
+import java.time.Instant;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,8 +25,9 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int quantity;
-    private int amount;
-    private int status;
-    private LocalDate date;
+    private long amount;
+    private String status;
+    private Instant date;
+    private long productId;
     
 }
