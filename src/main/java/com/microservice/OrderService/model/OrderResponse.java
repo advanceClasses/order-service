@@ -14,7 +14,7 @@ public class OrderResponse {
     
     private long id;
     private int quantity;
-    private int amount;
+    private long amount;
     private String status;
     private Instant date;
     private long productId;
